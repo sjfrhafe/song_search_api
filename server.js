@@ -3,7 +3,7 @@ const package = require('./package.json')
 const magnifier = require('./magnifier')
 const app = express()
 const homepath = package.homepath || '/api'
-const fetch = require('node-fetch')
+const homeport = package.homeport || '2525'
 
 magnifier.init()
 
@@ -13,11 +13,9 @@ app.get(homepath, function (req, res) {
 
 app.get(homepath + '/:query', function (req, res) {
   let query = req.params.query
-
   magnifier.find(query)
   .then(data => res.json(data))
   .catch(() => res.sendStatus(500))
 })
 
-
-app.listen(2525)
+app.listen(homeport)
