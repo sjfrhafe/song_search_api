@@ -2,7 +2,7 @@ const puppeteer = require('puppeteer');
 
 class Magnifier{
   init = async () => {
-    this.browser = await puppeteer.launch({args: ['--no-sandbox', '--disable-setuid-sandbox'], headless: false});
+    this.browser = await puppeteer.launch({args: ['--no-sandbox', '--disable-setuid-sandbox'], headless: true});
   }
 
   find = async (query) => {
