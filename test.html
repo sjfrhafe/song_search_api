@@ -48,7 +48,7 @@
         loading.style.display = 'inline-block'
         send.disabled = true
 
-        fetch(window.location.href + 'search/' + query.value)
+        fetch(window.location.href + '/search/' + query.value)
         .then(data => data.json())
         .then(data => result.innerText = JSON.stringify(data, null, '\t'))
         .then(release)

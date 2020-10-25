@@ -26,10 +26,6 @@ app.get(ssaConfig.homepath, (req, res) => {
   }
 })
 
-app.get(ssaConfig.homepath, function (req, res) {
-  res.json({message: ''})
-})
-
 app.get(ssaConfig.homepath + 'search/:query', function (req, res) {
   let query = req.params.query
   magnifier.find(query)
