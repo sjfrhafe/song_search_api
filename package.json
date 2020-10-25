@@ -1,7 +1,5 @@
 {
   "name": "song_search_api",
-  "homepath": "/yt_search_api",
-  "homeport": "2525",
   "version": "1.0.0",
   "description": "song_search_api",
   "main": "index.js",

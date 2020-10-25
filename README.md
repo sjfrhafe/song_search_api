@@ -22,12 +22,12 @@ fetch('http://localhost:[YOUR_PORT]:/[YOUR_PATH]/[QUERY]')
 $ cd song_search_api<br>
 $ npm install
 ### 2. Configure Port and Path
-#### package.json
+#### ssa.config.json
+Create ssa.config.json in homefolder to change default address 'http:localhost:2525/' if necessary.
 ```json
 {
   "homepath": "[YOUR_PATH]",
-  "homeport": "[YOUR_PORT]",
-  ...
+  "homeport": "[YOUR_PORT]"
 }
 ```
 ### 3. Start server
