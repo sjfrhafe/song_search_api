@@ -1,5 +1,6 @@
 const express = require('express')
 const magnifier = require('./magnifier')
+const path = require('path')
 const app = express()
 
 const ssaConfigDefault = {homepath: '', homeport: '2525'}
@@ -15,11 +16,15 @@ try{
 
 magnifier.init()
 
-app.get(ssaConfig.homepath, function (req, res) {
-  res.json({message: 'See https://github.com/sjfrhafe/song_search_api#readme for documentation'})
+app.get(ssaConfig.homepath, (req, res) => {
+  res.sendFile(path.join(__dirname, 'test.html'))
 })
 
-app.get(ssaConfig.homepath + ':query', function (req, res) {
+app.get(ssaConfig.homepath, function (req, res) {
+  res.json({message: ''})
+})
+
+app.get(ssaConfig.homepath + 'search/:query', function (req, res) {
   let query = req.params.query
   magnifier.find(query)
   .then(data => res.json(data))
