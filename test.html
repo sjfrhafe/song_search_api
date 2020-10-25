@@ -18,6 +18,10 @@
           <input type="text" class="form-control" id="query">
           <small id="query" class="form-text text-muted">The API will search for the keywords on YouTube and return the first result with link and title.</small>
         </div>
+        <div class="form-group form-check">
+          <input type="checkbox" class="form-check-input" id="fast">
+          <label class="form-check-label" for="fast">Use fast API</label>
+        </div>
         <button id='send' onclick="search()" class="btn btn-primary" type="button">
           <span id='send-text'>Send</span>
           <span id='loading' style='display: none' class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
@@ -34,7 +38,8 @@
       const sendText = document.getElementById('send-text')
       const loading = document.getElementById('loading')
       const send = document.getElementById('send')
-      console.log()
+      const fast = document.getElementById('fast')
+
       release = () => {
         sendText.innerText = 'Send'
         loading.style.display = 'none'
@@ -48,7 +53,7 @@
         loading.style.display = 'inline-block'
         send.disabled = true
 
-        fetch(window.location.href + (window.location.href.includes('localhost')?'':'/') + 'search/' + query.value)
+        fetch(window.location.href + (window.location.href.includes('localhost')?'':'/') + (fast.checked?'search-fast/':'search/') + query.value)
         .then(data => data.json())
         .then(data => result.innerText = JSON.stringify(data, null, '\t'))
         .then(release)

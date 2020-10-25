@@ -1,5 +1,6 @@
 const express = require('express')
-const magnifier = require('./magnifier')
+const search = require('./search')
+const searchFast = require('./search-fast')
 const path = require('path')
 const app = express()
 
@@ -16,7 +17,7 @@ try{
   ssaConfig.testing = ssaConfigDefault.testing
 }
 
-magnifier.init()
+search.init()
 
 app.get(ssaConfig.homepath, (req, res) => {
   if(ssaConfig.testing){
@@ -28,7 +29,14 @@ app.get(ssaConfig.homepath, (req, res) => {
 
 app.get(ssaConfig.homepath + 'search/:query', function (req, res) {
   let query = req.params.query
-  magnifier.find(query)
+  search.find(query)
+  .then(data => res.json(data))
+  .catch(() => res.sendStatus(500))
+})
+
+app.get(ssaConfig.homepath + 'search-fast/:query', function (req, res) {
+  let query = req.params.query
+  searchFast.find(query)
   .then(data => res.json(data))
   .catch(() => res.sendStatus(500))
 })

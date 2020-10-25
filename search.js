@@ -1,6 +1,6 @@
 const puppeteer = require('puppeteer');
 
-class Magnifier{
+class Search{
   init = async () => {
     this.browser = await puppeteer.launch({args: ['--no-sandbox', '--disable-setuid-sandbox'], headless: true});
   }
@@ -8,16 +8,7 @@ class Magnifier{
   find = async (query) => {
     return new Promise(async (resolve, reject) => {
       try{
-        let page
-
-        let timeout = setTimeout(() => {
-          if(page) {
-            reject('timeout')
-            page.close()
-          }
-        }, 4000)
-
-        page = await this.browser.newPage()
+        let page = await this.browser.newPage()
 
         await page.setRequestInterception(true);
         page.on('request', (request) => {
@@ -35,8 +26,6 @@ class Magnifier{
           }
         })
 
-        clearTimeout(timeout)
-
         page.close()
 
         resolve(videoData)
@@ -47,4 +36,4 @@ class Magnifier{
   }
 }
 
-module.exports = new Magnifier();
+module.exports = new Search();

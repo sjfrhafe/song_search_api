@@ -11,6 +11,15 @@ GET http://localhost:[YOUR_PORT]/[YOUR_PATH]/search/[QUERY]
     "title": "What is an API?"
 }
 ```
+### Search Song (fast)
+```
+GET http://localhost:[YOUR_PORT]/[YOUR_PATH]/search-fast/[QUERY]
+```
+```json
+{
+    "link": "https://www.youtube.com/watch?v=s7wmiS2mSXY"
+}
+```
 ### Test Website (if enabled)
 ```
 GET http://localhost:[YOUR_PORT]/[YOUR_PATH]
