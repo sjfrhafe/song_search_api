@@ -59,6 +59,8 @@ public String search(String query) throws IOException {
 <hr>
 
 ## Host API
+### 0. Install node and npm
+Find installation Guide [here](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
 ### 1. Install dependencies
 >$ git clone https://github.com/sjfrhafe/song_search_api.git<br>
 $ cd song_search_api<br>
