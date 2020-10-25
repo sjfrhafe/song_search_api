@@ -7,7 +7,7 @@ fetch('http://localhost:[YOUR_PORT]:/[YOUR_PATH]/[QUERY]')
 .then(data => data.json())
 .then(data => console.log(data))
 ```
-#### output (json)
+#### sample output (json)
 ```json
 {
     "link": "https://www.youtube.com/watch?v=s7wmiS2mSXY",
@@ -19,15 +19,17 @@ fetch('http://localhost:[YOUR_PORT]:/[YOUR_PATH]/[QUERY]')
 ## Host API
 ### 1. Install dependencies
 >$ git clone https://github.com/sjfrhafe/song_search_api.git<br>
->$ cd song_search_api<br>
->$ npm install
+$ cd song_search_api<br>
+$ npm install
 ### 2. Configure Port and Path
 #### package.json
->{<br>
->"homepath": "[YOUR_PATH]", <br>
->"homeport": "[YOUR_PORT]", <br>
->...<br>
->}
+```json
+{
+  "homepath": "[YOUR_PATH]",
+  "homeport": "[YOUR_PORT]",
+  ...
+}
+```
 ### 3. Start server
 >$ node server
 
@@ -35,7 +37,7 @@ fetch('http://localhost:[YOUR_PORT]:/[YOUR_PATH]/[QUERY]')
 
 ## Other languages
 #### Java example
-
+Use [GSON](https://github.com/google/gson) as JSON parser
 ```java
 private final String ORIGINURL = "http://localhost:[YOUR_PORT]:/[YOUR_PATH]/[QUERY]";
 private HttpURLConnection con;
