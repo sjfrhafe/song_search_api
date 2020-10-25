@@ -20,7 +20,7 @@ GET http://localhost:[YOUR_PORT]/[YOUR_PATH]
 ## Client code
 #### Javascript example
 ```javascript
-fetch('http://localhost:[YOUR_PORT]:/[YOUR_PATH]/[QUERY]')
+fetch('http://localhost:[YOUR_PORT]:/[YOUR_PATH]/search/[QUERY]')
 .then(data => data.json())
 .then(data => console.log(data))
 ```
@@ -28,7 +28,7 @@ fetch('http://localhost:[YOUR_PORT]:/[YOUR_PATH]/[QUERY]')
 #### Java example
 Use [GSON](https://github.com/google/gson) as JSON parser
 ```java
-private final String ORIGINURL = "http://localhost:[YOUR_PORT]:/[YOUR_PATH]/[QUERY]";
+private final String ORIGINURL = "http://localhost:[YOUR_PORT]:/[YOUR_PATH]/search/[QUERY]";
 private HttpURLConnection con;
 
 public String search(String query) throws IOException {
