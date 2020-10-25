@@ -3,21 +3,27 @@ const magnifier = require('./magnifier')
 const path = require('path')
 const app = express()
 
-const ssaConfigDefault = {homepath: '', homeport: '2525'}
+const ssaConfigDefault = {homepath: '', homeport: '2525', testing: false}
 var ssaConfig = {}
 try{
   const ssaConfigFile = require('./ssa.config.json')
   ssaConfig.homepath = (ssaConfigFile.homepath || ssaConfigDefault.homepath) + '/'
   ssaConfig.homeport = ssaConfigFile.homeport || ssaConfigDefault.homeport
+  ssaConfig.testing = ssaConfigFile.testing || ssaConfigDefault.testing
 }catch(e){
   ssaConfig.homepath = ssaConfigDefault.homepath + '/'
   ssaConfig.homeport = ssaConfigDefault.homeport
+  ssaConfig.testing = ssaConfigDefault.testing
 }
 
 magnifier.init()
 
 app.get(ssaConfig.homepath, (req, res) => {
-  res.sendFile(path.join(__dirname, 'test.html'))
+  if(ssaConfig.testing){
+    res.sendFile(path.join(__dirname, 'test.html'))
+  }else{
+    res.sendStatus(400)
+  }
 })
 
 app.get(ssaConfig.homepath, function (req, res) {

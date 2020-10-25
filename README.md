@@ -1,41 +1,30 @@
 # Youtube song search API
 
 ## Use API
-#### javascript example
-```javascript
-fetch('http://localhost:[YOUR_PORT]:/[YOUR_PATH]/[QUERY]')
-.then(data => data.json())
-.then(data => console.log(data))
+### Search Song
 ```
-#### sample output (json)
+GET http://localhost:[YOUR_PORT]/[YOUR_PATH]/search/[QUERY]
+```
 ```json
 {
     "link": "https://www.youtube.com/watch?v=s7wmiS2mSXY",
     "title": "What is an API?"
 }
 ```
-<hr>
-
-## Host API
-### 1. Install dependencies
->$ git clone https://github.com/sjfrhafe/song_search_api.git<br>
-$ cd song_search_api<br>
-$ npm install
-### 2. Configure Port and Path
-#### ssa.config.json
-Create ssa.config.json in homefolder to change default address 'http:localhost:2525/' if necessary.
-```json
-{
-  "homepath": "[YOUR_PATH]",
-  "homeport": "[YOUR_PORT]"
-}
+### Test Website (if enabled)
 ```
-### 3. Start server
->$ node server
-
+GET http://localhost:[YOUR_PORT]/[YOUR_PATH]
+```
 <hr>
 
-## Other languages
+## Client code
+#### Javascript example
+```javascript
+fetch('http://localhost:[YOUR_PORT]:/[YOUR_PATH]/[QUERY]')
+.then(data => data.json())
+.then(data => console.log(data))
+```
+
 #### Java example
 Use [GSON](https://github.com/google/gson) as JSON parser
 ```java
@@ -66,3 +55,23 @@ public String search(String query) throws IOException {
         return content.toString();
 }
 ```
+
+<hr>
+
+## Host API
+### 1. Install dependencies
+>$ git clone https://github.com/sjfrhafe/song_search_api.git<br>
+$ cd song_search_api<br>
+$ npm install
+### 2. Configure Port, Path and Testingpage
+#### ssa.config.json
+Create ssa.config.json in homefolder to change default address 'http:localhost:2525/' if necessary and enable a testing website.
+```json
+{
+  "homepath": "[YOUR_PATH]",
+  "homeport": "[YOUR_PORT]",
+  "testing": "true"
+}
+```
+### 3. Start server
+>$ node server
