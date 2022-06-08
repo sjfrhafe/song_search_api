@@ -1,4 +1,4 @@
-const puppeteer = require('puppeteer');
+import puppeteer from 'puppeteer'
 
 class Search{
   init = async () => {
@@ -6,34 +6,27 @@ class Search{
   }
 
   find = async (query) => {
-    return new Promise(async (resolve, reject) => {
-      try{
-        let page = await this.browser.newPage()
+    let page = await this.browser.newPage()
 
-        await page.setRequestInterception(true);
-        page.on('request', (request) => {
-          if (request.resourceType() === 'image') request.abort();
-          else request.continue();
-        });
+    await page.setRequestInterception(true);
+    page.on('request', (request) => {
+      if (request.resourceType() === 'image') request.abort();
+      else request.continue();
+    });
 
-        await page.goto('https://www.youtube.com/results?search_query=' + query)
-        await page.waitForSelector('#video-title')
+    await page.goto('https://www.youtube.com/results?search_query=' + query)
+    await page.waitForSelector('#video-title')
 
-        const videoData = await page.evaluate(() => {
-          return{
-            link: document.getElementById('video-title').href,
-            title: document.getElementById('video-title').title
-          }
-        })
-
-        page.close()
-
-        resolve(videoData)
-      }catch(e){
-        reject(e)
+    const videoData = await page.evaluate(() => {
+      return{
+        link: document.getElementById('video-title').href,
+        title: document.getElementById('video-title').title
       }
     })
+
+    page.close()
+    return videoData
   }
 }
 
-module.exports = new Search();
+export default new Search()

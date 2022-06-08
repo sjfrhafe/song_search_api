@@ -1,10 +1,15 @@
-const express = require('express')
-const search = require('./search')
-const searchFast = require('./search-fast')
-const path = require('path')
+import express from 'express'
+import search from './search.js'
+import searchFast from './search-fast.js' 
+import path from 'path'
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+
 const app = express()
 
-const ssaConfigDefault = {homepath: '', homeport: '2525', testing: false}
+const ssaConfigDefault = {homepath: '', homeport: '2525', testing: true}
 var ssaConfig = {}
 try{
   const ssaConfigFile = require('./ssa.config.json')

@@ -1,5 +1,6 @@
 {
   "name": "song_search_api",
+  "type": "module",
   "version": "1.0.0",
   "description": "song_search_api",
   "main": "index.js",
@@ -18,8 +19,8 @@
   },
   "homepage": "https://github.com/sjfrhafe/song_search_api#readme",
   "dependencies": {
-    "express": "^4.17.1",
-    "node-fetch": "^2.6.1",
-    "puppeteer": "^5.4.0"
+    "express": "^4.18.1",
+    "node-fetch": "^3.2.5",
+    "puppeteer": "^14.3.0"
   }
 }
