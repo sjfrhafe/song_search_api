@@ -1,32 +1,26 @@
 import express from 'express'
-import search from './search.js'
-import searchFast from './search-fast.js' 
+import search from './strategies/search.js'
+import searchFast from './strategies/search-fast.js' 
 import path from 'path'
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
+import process from 'process';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const app = express()
 
-const ssaConfigDefault = {homepath: '', homeport: '2525', testing: true}
-var ssaConfig = {}
-try{
-  const ssaConfigFile = require('./ssa.config.json')
-  ssaConfig.homepath = (ssaConfigFile.homepath || ssaConfigDefault.homepath) + '/'
-  ssaConfig.homeport = ssaConfigFile.homeport || ssaConfigDefault.homeport
-  ssaConfig.testing = ssaConfigFile.testing || ssaConfigDefault.testing
-}catch(e){
-  ssaConfig.homepath = ssaConfigDefault.homepath + '/'
-  ssaConfig.homeport = ssaConfigDefault.homeport
-  ssaConfig.testing = ssaConfigDefault.testing
+var ssaConfig = {
+  homepath: (process.env.HOMEPATH || '') + '/', 
+  homeport: process.env.HOMEPORT || '2525', 
+  testing: process.env.TESTING == undefined ? true : (process.env.TESTING?.toLowerCase() === 'true')
 }
 
 search.init()
 
 app.get(ssaConfig.homepath, (req, res) => {
   if(ssaConfig.testing){
-    res.sendFile(path.join(__dirname, 'test.html'))
+    res.sendFile(path.join(__dirname, 'public', 'test.html'))
   }else{
     res.sendStatus(400)
   }
@@ -46,4 +40,5 @@ app.get(ssaConfig.homepath + 'search-fast/:query', function (req, res) {
   .catch(() => res.sendStatus(500))
 })
 
+console.log(ssaConfig.homepath, ssaConfig.homeport, ssaConfig.testing)
 app.listen(ssaConfig.homeport)

@@ -75,14 +75,12 @@ Find installation Guide [here](https://docs.npmjs.com/downloading-and-installing
 $ cd song_search_api<br>
 $ npm install
 ### 2. Configure Port, Path and Testingpage
-#### ssa.config.json
-Create ssa.config.json in homefolder to change default address 'http:localhost:2525/' if necessary and enable a testing website.
+#### Environment Variables
+Use environmant vaiables to change the default address 'http:localhost:2525/' if necessary and enable a testing website.
 ```json
-{
-  "homepath": "[YOUR_PATH]",
-  "homeport": "[YOUR_PORT]",
-  "testing": "true"
-}
+HOMEPATH
+HOMEPORT
+TESTING
 ```
 ### 3. Start server
 >$ node server
