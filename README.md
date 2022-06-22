@@ -83,4 +83,4 @@ HOMEPORT
 TESTING
 ```
 ### 3. Start server
->$ node server
+>$ npm start
