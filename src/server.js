@@ -40,5 +40,4 @@ app.get(ssaConfig.homepath + 'search-fast/:query', function (req, res) {
   .catch(() => res.sendStatus(500))
 })
 
-console.log(ssaConfig.homepath, ssaConfig.homeport, ssaConfig.testing)
 app.listen(ssaConfig.homeport)
