@@ -76,7 +76,7 @@ $ cd song_search_api<br>
 $ npm install
 ### 2. Configure Port, Path and Testingpage
 #### Environment Variables
-Use environmant vaiables to change the default address 'http:localhost:2525/' if necessary and enable a testing website.
+Use environmant vaiables to change the default address 'http://localhost:2525/' if necessary and enable a testing website.
 ```json
 HOMEPATH
 HOMEPORT
